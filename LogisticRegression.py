@@ -56,16 +56,16 @@ class LogisticRegressionGD(object):
       # sume of squared errors cost
       cost = (-y.dot(np.log(output)) - ((1 - y).dot(np.log(1 - output))))
       self.cost_.append(cost)
-      return self
+    return self
     
-    def net_input(self, X):
-      """ Calculate net input """
-      return np.dot(X, self.w_[1:]) + self.w_[0]
-    
-    def activation(self, z):
-      """ Computer logistic sigmoid activation """
-      return 1. / (1. + np.exp(-np.clip(z, -250, 250)))
-    
-    def predict(self, X):
-      """ Return class label after unit step """
-      return np.where(self.net_input(X) >= 0.0, 1, 0)
+  def net_input(self, X):
+    """ Calculate net input """
+    return np.dot(X, self.w_[1:]) + self.w_[0]
+  
+  def activation(self, z):
+    """ Computer logistic sigmoid activation """
+    return 1. / (1. + np.exp(-np.clip(z, -250, 250)))
+  
+  def predict(self, X):
+    """ Return class label after unit step """
+    return np.where(self.net_input(X) >= 0.0, 1, 0)
